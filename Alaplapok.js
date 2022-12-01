@@ -14,7 +14,7 @@ export default class App extends Component {
 
   async getMovies() {
     try {
-      const response = await fetch(IP.ipcim+'processzor');
+      const response = await fetch(IP.ipcim+'alaplap');
       const json = await response.json();
       console.log(json)
       this.setState({ data: json });
@@ -35,7 +35,7 @@ export default class App extends Component {
       bevitel1:szam
     }
     alert(adatok.bevitel1)
-    const response = fetch('http://192.168.198.169:3000/processzor',{
+    const response = fetch('http://192.168.198.169:3000/alaplap',{
       method: "POST",
       body: JSON.stringify(adatok),
       headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -54,14 +54,14 @@ export default class App extends Component {
         {isLoading ? <ActivityIndicator/> : (
           <FlatList
             data={data}
-            keyExtractor={({ processzor_id }, index) => processzor_id}
+            keyExtractor={({ alaplap_id }, index) => alaplap_id}
             renderItem={({ item }) => (
 
               <View style={{marginBottom:30}}>
               <Text style={{fontSize:30,color:'darkred',textAlign:'center'}}>
-                {item.processzor_nev}
+                {item.alaplap_nev}
               </Text>
-              <Image   source={{uri: IP.ipcim+item.processzor_kep+'.png'}} style={{width:300,height:300,alignSelf:'center'}}   />
+              <Image   source={{uri: IP.ipcim+item.alaplap_kep+'.png'}} style={{width:300,height:300,alignSelf:'center'}}   />
              {/* <TouchableOpacity
           style={styles.button}
           onPress={async ()=>this.szavazat(item.film_id)}
