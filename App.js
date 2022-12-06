@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { Button, View } from 'react-native';
+import { Button, View, Text } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import Processzorok from './Processzorok'
 import Alaplapok from './Alaplapok'
-import Kezdőlap from './Kezdo'
+import Kezdolap from './Kezdolap'
+
+
 
 //function HomeScreen({ navigation }) {
  // return (
@@ -26,11 +28,13 @@ import Kezdőlap from './Kezdo'
 //}
 
 
-function Kezdolap_lap({ navigation }) {
+
+function Kezdo_lap({ navigation }) {
   return (
-   <Kezdőlap />
+    <Kezdolap />
   );
 }
+
 
 function Processzorok_lap({ navigation }) {
   return (
@@ -50,9 +54,8 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator useLegacyImplementation initialRouteName="Home">
-        <Drawer.Screen name="Kezdőlap" component={Kezdolap_lap} />
-
+      <Drawer.Navigator useLegacyImplementation screenOptions={{drawerStyle: {backgroundColor: '#8D75AA', width: 240}, headerShown: false, drawerActiveTintColor: 'purple' }} >
+        <Drawer.Screen name="Kezdőlap" component={Kezdo_lap}/>
         <Drawer.Screen name="Processzorok" component={Processzorok_lap} />
         <Drawer.Screen name="Alaplapok" component={Alaplapok_lap} />
       </Drawer.Navigator>

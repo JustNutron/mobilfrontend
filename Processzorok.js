@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {StyleSheet, ActivityIndicator, FlatList, Text, View, Image, TouchableOpacity } from 'react-native';
 const IP = require('./ipcim');
 
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -62,12 +63,7 @@ export default class App extends Component {
                 {item.processzor_nev}
               </Text>
               <Image   source={{uri: IP.ipcim+item.processzor_kep+'.png'}} style={{width:300,height:300,alignSelf:'center'}}   />
-             {/* <TouchableOpacity
-          style={styles.button}
-          onPress={async ()=>this.szavazat(item.film_id)}
-        >
-          <Text style={{color:'white',fontSize:30}}>Erre szavazok</Text>
-        </TouchableOpacity>   */}        
+           
               </View>
             )} 
           />
