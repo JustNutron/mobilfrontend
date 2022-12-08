@@ -62,7 +62,7 @@ export default class App extends Component {
               <Text style={{fontSize:30,color:'darkred',textAlign:'center'}}>
                 {item.processzor_nev}
               </Text>
-              <Image   source={{uri: IP.ipcim+item.processzor_kep+'.png'}} style={{width:300,height:300,alignSelf:'center'}}   />
+              <Image   source={{uri: IP.ipcim+item.processzor_kep+'.png'}} style={{width:350,height:350,alignSelf:'center'}}   />
            
               </View>
             )} 

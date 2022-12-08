@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { useFonts } from 'expo-font';
+import RNAnimatedBorder from "react-native-animated-border";
 import {StyleSheet, ActivityIndicator, FlatList, Text, View, Image, Linking, Button, TextInput, Pressable, ViewBase } from 'react-native';
-
-
 
 export default class App extends Component {
   constructor(props) {
@@ -35,8 +33,14 @@ export default class App extends Component {
     const { data, isLoading } = this.state;
 
     return (
-      <View style={{ flex: 1, padding: 24 , backgroundColor:"#6A4198",color:"white"}}>
-          <Text style={styles.hirek}>Hírek</Text>   
+      <View style={{ flex: 1, padding: 24 , backgroundColor:"black", color:"white"}}>
+          <Text style={styles.hirek}>Hírek</Text>
+          <View>
+
+           <RNAnimatedBorder firstColor="white" secondColor="purple" borderWidth={5} borderRadius={25} margin={20}></RNAnimatedBorder>
+
+
+          </View>
       {isLoading ? <ActivityIndicator/> : (
         
           
@@ -44,20 +48,20 @@ export default class App extends Component {
             data={data}
             keyExtractor={({ id }, index) => id}
             renderItem={({ item }) => (
-              <View>
+              <View style={styles.hirekhatter}>
 
               <View style={{alignItems: 'center'}}>
 
            
-              <Image style={{width:300,height:200,marginTop:10,marginBottom:10, borderRadius: 10}} source={{uri: item.urlToImage}} /> 
+              <Image style={{width: 300 , height: 200, marginTop: 30, marginBottom: 10, borderRadius: 10}} source={{uri: item.urlToImage}} /> 
               </View>
 
               <Text style={styles.title}>{item.title}</Text>
 
-              <Text style={styles.alul2}>{item.description}</Text>
-              <Text style={styles.alul3}>{item.content}</Text>
+              <Text style={styles.leiras}>{item.description}</Text>
+              <Text style={styles.tartalom}>{item.content}</Text>
 
-              <Text style={{fontSize:12,fontStyle:"italic",color:"#e65c00", textAlign: 'center', marginBottom: 10, fontFamily: "Inter-Black"}}>{item.publishedAt}, {item.source.name}</Text>
+              <Text style={{fontSize: 12, fontStyle: "italic", color: "#710FE3", textAlign: 'center', marginBottom: 10,}}>{item.publishedAt}, {item.source.name}</Text>
               
  
               <Pressable style={styles.button} onPress={()=>Linking.openURL(item.url)}> 
@@ -90,22 +94,25 @@ const styles = StyleSheet.create({
   },
   title:{
     color:"#e6e6ff",
-    marginBottom:5,
+    marginBottom: 5,
     fontWeight: 'bold',
-    fontSize: 18,
-    textAlign:'center'
+    fontSize: 25,
+    textAlign: 'center',
+    paddingHorizontal: 20
   },
-  alul2:{
+  leiras:{
     color:"#b3b3ff",
     marginBottom:5,
-    fontSize:14,
-    textAlign:'justify'
+    fontSize: 12,
+    textAlign:'justify',
+    paddingHorizontal: 15
   },
-  alul3:{
-    color:"#8080ff",
-    marginBottom:5,
-    fontSize:12,
-    textAlign:'justify'
+  tartalom:{
+    color:"#331556",
+    marginBottom: 5,
+    fontSize: 10,
+    textAlign:'justify',
+    paddingHorizontal: 15
   },
   button: {
     alignItems: 'center',
@@ -114,7 +121,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 10,
     marginHorizontal: 50,
-    backgroundColor: '#150627'
+    backgroundColor: '#150627',
+    marginBottom: 25
   },
   text: {
     fontSize: 15,
@@ -129,5 +137,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
     marginTop: 20,
+  },
+  hirekhatter: {
+    backgroundColor: '#9969D1',
+    borderRadius: 25,
+    marginBottom: 30,
+    borderColor: 'purple',
+    borderWidth: 5
   }
 });
