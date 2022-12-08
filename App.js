@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Button, View, Text } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
@@ -12,17 +11,16 @@ import Pcepites from './PC_epites'
 
 
 
-
-//function HomeScreen({ navigation }) {
- // return (
-//   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-  //    <Button
-    //    onPress={() => navigation.navigate('Notifications')}
-      //  title="Go to notifications"
-     // />
-   // </View>
- // );
-//}
+function HomeScreen({ navigation }) {
+ return (
+   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+     <Button
+        onPress={() => navigation.navigate('Notifications')}
+        title="Go to notifications"
+      />
+    </View>
+  );
+}
 
 //function NotificationsScreen({ navigation }) {
  // return (
@@ -42,11 +40,7 @@ function Pcepites_lap({ navigation }) {
 }
 
 
-function Kezdo_lap({ navigation }) {
-  return (
-    <Kezdolap />
-  );
-}
+
 
 
 function Processzorok_lap({ navigation }) {
@@ -56,9 +50,10 @@ function Processzorok_lap({ navigation }) {
 }
 
 
-function Alaplapok_lap({ navigation }) {
+function Kezdo_lap({ navigation }) {
   return (
-   <Alaplapok />
+    <Alaplapok style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} 
+      />
   );
 }
 
