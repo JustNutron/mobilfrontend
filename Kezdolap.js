@@ -50,28 +50,24 @@ export default class App extends Component {
             renderItem={({ item }) => (
               <View style={styles.hirekhatter}>
 
-              <View style={{alignItems: 'center'}}>
+                <View style={{alignItems: 'center'}}>
 
            
-              <Image style={{width: 300 , height: 200, marginTop: 30, marginBottom: 10, borderRadius: 10}} source={{uri: item.urlToImage}} /> 
-              </View>
+                  <Image style={{width: 300 , height: 200, marginTop: 30, marginBottom: 10, borderRadius: 10}} source={{uri: item.urlToImage}} /> 
+                </View>
 
-              <Text style={styles.title}>{item.title}</Text>
+                <Text style={styles.title}>{item.title}</Text>
 
-              <Text style={styles.leiras}>{item.description}</Text>
-              <Text style={styles.tartalom}>{item.content}</Text>
-
-              <Text style={{fontSize: 12, fontStyle: "italic", color: "#710FE3", textAlign: 'center', marginBottom: 10,}}>{item.publishedAt}, {item.source.name}</Text>
+                <Text style={styles.leiras}>{item.description}</Text>
+                <Text style={styles.tartalom}>{item.content}</Text>
+                <Text style={{fontSize: 12, fontStyle: "italic", color: "#710FE3", textAlign: 'center', marginBottom: 10,}}>{item.publishedAt}, {item.source.name}</Text>
               
  
-              <Pressable style={styles.button} onPress={()=>Linking.openURL(item.url)}> 
-                <Text style={styles.text}>Olvass tovább itt...</Text>
-              </Pressable>
-              
+                <Pressable style={styles.button} onPress={()=>Linking.openURL(item.url)}> 
+                  <Text style={styles.text}>Olvass tovább itt...</Text>
+                </Pressable>
 
               </View>
-
-
             )}
           />
         )}

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {StyleSheet, ActivityIndicator, FlatList, Text, View, Image, TouchableOpacity } from 'react-native';
+import {StyleSheet, ActivityIndicator, FlatList, Text, View, Image, TouchableOpacity,SafeAreaView,TextInput} from 'react-native';
 const IP = require('./ipcim');
 
-export default class App extends Component {
+export default class Alaplap extends Component {
   constructor(props) {
     super(props);
 
@@ -29,50 +29,35 @@ export default class App extends Component {
     this.getMovies();
   }
 
- /* szavazat=(szam)=>{
-    //alert(szam)
-    var adatok={
-      bevitel1:szam
-    }
-    alert(adatok.bevitel1)
-    const response = fetch('http://192.168.198.169:3000/alaplap',{
-      method: "POST",
-      body: JSON.stringify(adatok),
-      headers: {"Content-type": "application/json; charset=UTF-8"}
-    });
-      const text =  response.text();
-      console.log(text)
-  }
-  */
 
 
   render() {
     const { data, isLoading } = this.state;
 
     return (
-      <View style={{ flex: 1, padding: 24 , marginTop:40}}>
+      
+      <SafeAreaView style={styles.container}>
+      <View style={styles.hatter}>
         {isLoading ? <ActivityIndicator/> : (
           <FlatList
             data={data}
-            keyExtractor={({ alaplap_id }, index) => alaplap_id}
+            keyExtractor={({ alaplap_id}, index) => alaplap_id}
             renderItem={({ item }) => (
 
               <View style={{marginBottom:30}}>
-              <Text style={{fontSize:30,color:'darkred',textAlign:'center'}}>
+              <Text style={styles.marka}>
+                {item.alaplap_marka}
+              </Text>
+              <Text style={styles.tipus}>
                 {item.alaplap_nev}
               </Text>
-              <Image   source={{uri: IP.ipcim+item.alaplap_kep+'.png'}} style={{width:300,height:300,alignSelf:'center'}}   />
-             {/* <TouchableOpacity
-          style={styles.button}
-          onPress={async ()=>this.szavazat(item.film_id)}
-        >
-          <Text style={{color:'white',fontSize:30}}>Erre szavazok</Text>
-        </TouchableOpacity>   */}        
+              <Image   source={{uri: IP.ipcim+item.alaplap_kep+'.png'}} style={styles.kep}   />          
               </View>
-            )} 
+            )}
           />
         )}
       </View>
+      </SafeAreaView>
     );
   }
 };
@@ -80,7 +65,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    paddingHorizontal: 10
+    paddingHorizontal: 2,
+    backgroundColor:"black"
   },
   button: {
     alignItems: "center",
@@ -92,5 +78,51 @@ const styles = StyleSheet.create({
   countContainer: {
     alignItems: "center",
     padding: 10
+  },
+  tipus:{
+    fontSize:18,
+    color:'white',
+    textAlign:'left',
+    marginBottom:8,
+    textShadowOffset:{
+      height:5,
+      width:5
+    },
+    textShadowColor:'black',
+    textShadowRadius:10,
+    paddingStart:10
+  },
+
+  hatter:{
+    flex:1,
+    marginTop:50,
+    marginBottom:10,
+    backgroundColor: '#9969D1',
+    marginHorizontal: 20,
+    borderRadius:20,
+    borderColor:'purple',
+    borderWidth:5
+  },
+  marka:{
+    textAlign:'left',
+    fontSize:21,
+    color:'white',
+    fontWeight:'bold',
+    margin:5,
+    textShadowOffset:{
+      height:5,
+      width:5
+    },
+    textShadowColor:'black',
+    textShadowRadius:10
+  },
+  kep:{
+    width:150,
+    height:150,
+    alignSelf:'flex-start',
+    borderRadius:20,
+    borderColor:'purple',
+    borderWidth:5,
+    marginLeft:10
   }
 });

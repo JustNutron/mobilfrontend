@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {StyleSheet, ActivityIndicator, FlatList, Text, View, Image, TouchableOpacity,SafeAreaView,TextInput} from 'react-native';
 const IP = require('./ipcim');
 
-export default class Processzor extends Component {
+export default class Videokartya extends Component {
   constructor(props) {
     super(props);
 
@@ -14,7 +14,7 @@ export default class Processzor extends Component {
 
   async getMovies() {
     try {
-      const response = await fetch(IP.ipcim+'processzor');
+      const response = await fetch(IP.ipcim+'videokartya');
       const json = await response.json();
       console.log(json)
       this.setState({ data: json });
@@ -41,17 +41,17 @@ export default class Processzor extends Component {
         {isLoading ? <ActivityIndicator/> : (
           <FlatList
             data={data}
-            keyExtractor={({ processzor_id}, index) => processzor_id}
+            keyExtractor={({ videokartya_id}, index) => videokartya_id}
             renderItem={({ item }) => (
 
               <View style={{marginBottom:30}}>
               <Text style={styles.marka}>
-                {item.processzor_marka}
+                {item.videokartya_marka}
               </Text>
               <Text style={styles.tipus}>
-                {item.processzor_nev}
+                {item.videokartya_nev}
               </Text>
-              <Image   source={{uri: IP.ipcim+item.processzor_kep+'.png'}} style={styles.kep}   />          
+              <Image   source={{uri: IP.ipcim+item.videokartya_kep+'.jpg'}} style={styles.kep}   />          
               </View>
             )}
           />

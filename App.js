@@ -1,59 +1,63 @@
 import * as React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
 import Processzorok from './Processzorok'
 import Alaplapok from './Alaplapok'
 import Kezdolap from './Kezdolap'
 import Beallitasok from './Beallitasok'
 import Profil from './Profil'
-import Pcepites from './PC_epites'
+import Pcepites from './Pcepites'
+import Videokartya from './Videokartya'
+import Gephaz from './Gephaz'
+import Alkatreszek from './Alkatreszek'
 
 
 
-function HomeScreen({ navigation }) {
- return (
-   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-     <Button
-        onPress={() => navigation.navigate('Notifications')}
-        title="Go to notifications"
-      />
-    </View>
+function Alkatreszek_lap({ navigation }) {
+  return (
+    <Alkatreszek navigation={ navigation } />
   );
 }
-
-//function NotificationsScreen({ navigation }) {
- // return (
- //   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-  //    <Button onPress={() => navigation.goBack()} title="Go back home" />
-   // </View>
- // );
-//}
-
-
-
 
 function Pcepites_lap({ navigation }) {
   return (
-    <Pcepites />
+    <Pcepites navigation={ navigation } />
   );
 }
 
-
-
-
+function Alaplapok_lap({ navigation }) {
+  return (
+    <Alaplapok navigation={navigation}
+      options={{headerShown: false }}/>
+  );
+}
 
 function Processzorok_lap({ navigation }) {
   return (
-   <Processzorok />
+   <Processzorok navigation={ navigation }
+    options={{headerShown: false}}/>
   );
 }
 
+function Videokartya_lap({ navigation }) {
+  return (
+    <Videokartya navigation={navigation}
+      options={{headerShown: false }}/>
+  );
+}
+
+function Gephaz_lap({ navigation }) {
+  return (
+    <Gephaz navigation={navigation}
+      options={{headerShown: false }}/>
+  );
+}
 
 function Kezdo_lap({ navigation }) {
   return (
-    <Alaplapok style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} 
-      />
+    <Kezdolap/>
   );
 }
 
@@ -69,34 +73,64 @@ function Beallitasok_lap({ navigation }) {
   );
 }
 
-const Drawer = createDrawerNavigator();
-
-export default function App() {
+function Root({ navigation }) {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator useLegacyImplementation
-        screenOptions={{drawerStyle: {backgroundColor: '#8D75AA', width: 200},
+    <Drawer.Navigator useLegacyImplementation
+        screenOptions={{drawerStyle: {backgroundColor: '#8D75AA', width: 260},
         headerShown: false, drawerActiveTintColor: 'purple',
         }} >
         <Drawer.Screen name="Kezdőlap" component={Kezdo_lap} options={{
           drawerIcon: ({color}) => (
-            <Ionicons name='home-outline' size={22} color={color}/>
+            <Ionicons name='home' size={22} color={color}/>
           )
         }}/>
         <Drawer.Screen name="Profil" component={Profil_lap} options={{
           drawerIcon: ({color}) => (
-            <Ionicons name='person-outline' size={22} color={color}/>
+            <Ionicons name='person' size={22} color={color}/>
           )
         }}/>
         <Drawer.Screen name="Beállítások" component={Beallitasok_lap} options={{
           drawerIcon: ({color}) => (
-            <Ionicons name='settings-outline' size={22} color={color}/>
+            <Ionicons name='settings' size={22} color={color}/>
           )
         }}/>
-        <Drawer.Screen name="PC építés" component={Pcepites_lap} />
-        <Drawer.Screen name="Processzorok" component={Processzorok_lap} />
-        <Drawer.Screen name="Alaplapok" component={Alaplapok_lap} />
+        <Drawer.Screen name="PC Építés" component={Pcepites_lap} options={{
+          drawerIcon: ({color}) => (
+            <Ionicons name='build' size={22} color={color}/>
+          )
+        }}/>
+         <Drawer.Screen name="Alkatrészek" component={Alkatreszek_lap} options={{
+          drawerIcon: ({color}) => (
+            <Ionicons name='basket' size={22} color={color}/>
+          )
+        }}/>
+      {/*  <Drawer.Screen name="Processzorok" component={Processzorok_lap} />
+       <Drawer.Screen name="Alaplapok" component={Alaplapok_lap} /> */} 
       </Drawer.Navigator>
+
+  );
+}
+
+
+
+const Drawer = createDrawerNavigator();
+const Stack = createNativeStackNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+    <Stack.Navigator>
+    <Stack.Screen
+      name="Root"
+      component={Root}
+      options={{ headerShown: false }}
+    />
+    <Stack.Screen name="Alaplapok" component={Alaplapok} options={{headerShown: false}}/>
+    <Stack.Screen name="Processzorok" component={Processzorok} options={{headerShown: false}} />
+    <Stack.Screen name="Videokartya" component={Videokartya} options={{headerShown: false}} />
+    <Stack.Screen name="Gephaz" component={Gephaz} options={{headerShown: false}} />
+
+    </Stack.Navigator>
     </NavigationContainer>
   );
 }

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
 import {StyleSheet, ActivityIndicator, FlatList, Text, View, Image, TouchableOpacity,ScrollView ,SafeAreaView} from 'react-native';
-
 
 
 
@@ -31,7 +29,8 @@ export default class App extends Component {
         <Text style={styles.alcim}>Alaplap</Text>
         <TouchableOpacity
          style={styles.button}
-         onPress={this.onPress}
+         onPress={()=>this.props.navigation.navigate('Alaplapok')}
+
         >
          
          <Image style={styles.kiskep} source={require('./kepek/alaplap.jpg')} />
@@ -40,7 +39,7 @@ export default class App extends Component {
         <Text style={styles.alcim}>Processzor</Text>
         <TouchableOpacity
          style={styles.button}
-         onPress={this.onPress}
+         onPress={()=>this.props.navigation.navigate('Processzorok')}
        >
          
          <Image style={styles.kiskep} source={require('./kepek/processzor.jpg')} />
@@ -85,16 +84,15 @@ export default class App extends Component {
        <Text style={styles.alcim}>Videókártya</Text>
        <TouchableOpacity
          style={styles.button}
-         onPress={this.onPress}
+         onPress={()=>this.props.navigation.navigate('Videokartya')} 
        >
-         
          <Image style={styles.kiskep} source={require('./kepek/videokartya.jpg')} />
        </TouchableOpacity>
 
        <Text style={styles.alcim}>Gépház</Text>
        <TouchableOpacity
          style={styles.button}
-         onPress={this.onPress}
+         onPress={()=>this.props.navigation.navigate('Gephaz')}
        >
          
          <Image style={styles.kiskep} source={require('./kepek/gephaz.jpg')} />
