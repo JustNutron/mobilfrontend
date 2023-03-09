@@ -28,7 +28,6 @@ export default class App extends Component {
     this.getNews(this.state.nyelv);
   }
 
-
   render() {
     const { data, isLoading } = this.state;
 

@@ -12,12 +12,19 @@ import Pcepites from './Pcepites'
 import Videokartya from './Videokartya'
 import Gephaz from './Gephaz'
 import Alkatreszek from './Alkatreszek'
-
+import Kereses from './Kereses'
+import Valogat from './Valogat'
 
 
 function Alkatreszek_lap({ navigation }) {
   return (
     <Alkatreszek navigation={ navigation } />
+  );
+}
+
+function Kereses_lap({ navigation }) {
+  return (
+    <Kereses navigation={ navigation } />
   );
 }
 
@@ -33,6 +40,7 @@ function Alaplapok_lap({ navigation }) {
       options={{headerShown: false }}/>
   );
 }
+
 
 function Processzorok_lap({ navigation }) {
   return (
@@ -51,6 +59,14 @@ function Videokartya_lap({ navigation }) {
 function Gephaz_lap({ navigation }) {
   return (
     <Gephaz navigation={navigation}
+      options={{headerShown: false }}/>
+  );
+}
+
+//Isitmtől nekem
+function Valogat_lap({ navigation }) {
+  return (
+    <Valogat navigation={navigation}
       options={{headerShown: false }}/>
   );
 }
@@ -84,6 +100,11 @@ function Root({ navigation }) {
             <Ionicons name='home' size={22} color={color}/>
           )
         }}/>
+        <Drawer.Screen name="Keresés" component={Kereses_lap} options={{
+          drawerIcon: ({color}) => (
+            <Ionicons name='search' size={22} color={color}/>
+          )
+        }}/>
         <Drawer.Screen name="Profil" component={Profil_lap} options={{
           drawerIcon: ({color}) => (
             <Ionicons name='person' size={22} color={color}/>
@@ -104,6 +125,12 @@ function Root({ navigation }) {
             <Ionicons name='basket' size={22} color={color}/>
           )
         }}/>
+        <Drawer.Screen name="Válogat" component={Valogat_lap} options={{
+          drawerIcon: ({color}) => (
+            <Ionicons name='basket' size={22} color={color}/>
+          )
+        }}/>
+        
       {/*  <Drawer.Screen name="Processzorok" component={Processzorok_lap} />
        <Drawer.Screen name="Alaplapok" component={Alaplapok_lap} /> */} 
       </Drawer.Navigator>
@@ -129,6 +156,7 @@ export default function App() {
     <Stack.Screen name="Processzorok" component={Processzorok} options={{headerShown: false}} />
     <Stack.Screen name="Videokartya" component={Videokartya} options={{headerShown: false}} />
     <Stack.Screen name="Gephaz" component={Gephaz} options={{headerShown: false}} />
+    
 
     </Stack.Navigator>
     </NavigationContainer>
